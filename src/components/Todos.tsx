@@ -24,8 +24,12 @@ const Todos: FC<TodosProps> = ({ task, IsCompleted }) => {
     <Container isCompleted={IsCompleted}>
       <TasTitle>{task.title}</TasTitle>
       <Icons>
-        <Done src={DoneIcon} alt='Done' onClick={handleDone} />
-        <Delete src={DeleteIcon} alt='Delete' onClick={handleDelete} />
+        <DoneBg>
+          <Image src={DoneIcon} alt='Done' onClick={handleDone} />
+        </DoneBg>
+        <DeleteBG>
+          <Image src={DeleteIcon} alt='Delete' onClick={handleDelete} />
+        </DeleteBG>
       </Icons>
     </Container>
   );
@@ -35,8 +39,11 @@ const Container = styled.div<{
   isCompleted: boolean;
 }>`
   background-color: #000;
-  opacity: ${({ isCompleted }) => (isCompleted ? '0.5' : '1')};
-  margin-top: 32px;
+  &:first-of-type {
+    margin-top: 32px;
+  }
+  margin-top: 16px;
+  opacity: ${({ isCompleted }) => (isCompleted ? '7%' : '1')};
   width: 100%;
   display: flex;
   align-items: center;
@@ -46,6 +53,7 @@ const Container = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 
 const TasTitle = styled.p`
@@ -63,16 +71,33 @@ const Icons = styled.div`
   gap: 8px;
 `;
 
-const Done = styled.img`
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
+const Image = styled.img`
+  width: 20px;
+  height: 20px;
+`;
 
+const DoneBg = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 37px;
+  height: 37px;
+  right: 37px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  border-radius: 4px;
   &:hover {
     background-color: #5efc8d;
   }
 `;
 
-const Delete = styled.img``;
+const DeleteBG = styled(DoneBg)`
+  right: 0px;
+  &:hover {
+    background-color: #fc5e5e;
+  }
+`;
 
 export default Todos;

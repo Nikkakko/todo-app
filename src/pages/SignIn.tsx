@@ -4,8 +4,9 @@ import Button from '../components/Button';
 import { AddPhotoSvg } from '../assets/svgs';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addUser } from '../features/userSlice';
+import { useEffect } from 'react';
 
 type Inputs = {
   name: string;
@@ -15,6 +16,7 @@ type Inputs = {
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { users } = useAppSelector(state => state.user);
 
   const {
     register,
@@ -33,9 +35,15 @@ const SignIn = () => {
           file: reader.result as string, // Store image as a base64 string
         })
       );
+      navigate('/tasks');
     };
-    navigate('/tasks');
   };
+
+  useEffect(() => {
+    if (users) {
+      navigate('/tasks');
+    }
+  }, [users, navigate]);
 
   return (
     <SignInContainer>

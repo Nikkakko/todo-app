@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import Input from '../components/Input';
 import { useForm } from 'react-hook-form';
@@ -14,15 +13,13 @@ type Inputs = {
 const TodoTasks = () => {
   const dispatch = useAppDispatch();
   const { tasks } = useAppSelector(state => state.tasks);
+
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm<Inputs>();
-
-  console.log(tasks);
 
   const onSubmit = (data: Inputs) => {
     dispatch(addTask({ title: data.task }));
@@ -36,22 +33,22 @@ const TodoTasks = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type='text'
-          placeholder='Add Your Daily Tasks'
+          placeholder='my tasks'
           {...register('task', { required: 'Required' })}
           padding='12px 16px'
         />
-
         <Button
           title='Add'
           onClick={handleSubmit(onSubmit)}
           hoverColor='#000'
         />
       </Form>
-
+      <Error>
+        {errors.task && errors.task.type === 'required' && 'Please add a task'}
+      </Error>
       {!tasks.length && (
         <Title style={{ marginTop: '32px' }}>No Tasks Added</Title>
       )}
-
       {tasks.map(task => (
         <Todos key={task.id} task={task} IsCompleted={task.IsCompleted} />
       ))}
@@ -73,7 +70,6 @@ const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-top: 16px;
 `;
 
@@ -83,6 +79,15 @@ const Title = styled.h1`
   letter-spacing: 0px;
   text-align: center;
   text-transform: capitalize;
+`;
+
+const Error = styled.p`
+  font-size: 14px;
+  color: #ff0000;
+  letter-spacing: 0px;
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 8px;
 `;
 
 export default TodoTasks;

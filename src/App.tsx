@@ -5,9 +5,10 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
-import { Home, SignIn } from './pages';
+import { Home, NotFound, SignIn } from './pages';
 import { TodoTasks } from './pages';
 import TasksLayout from './layout/TasksLayout';
+import Protected from './components/ProtectedRoute';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,8 +16,16 @@ const router = createBrowserRouter(
       <Route path='/' element={<Home />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path='/tasks' element={<TasksLayout />}>
-        <Route index element={<TodoTasks />} />
+        <Route
+          index
+          element={
+            <Protected>
+              <TodoTasks />
+            </Protected>
+          }
+        />
       </Route>
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 );

@@ -2,11 +2,17 @@ import styled from 'styled-components';
 import { TodoStarter } from '../assets/svgs';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import { useAppSelector } from '../app/hooks';
 
 const Home = () => {
   const navigate = useNavigate();
+  const { users } = useAppSelector(state => state.user);
 
   const handleGetStarted = () => {
+    if (users) {
+      navigate('/tasks');
+      return;
+    }
     navigate('/signin');
   };
 
@@ -15,8 +21,10 @@ const Home = () => {
       <Wrapper>
         <img src={TodoStarter} alt='Todo Starter' />
         <Heading>Keep Track of Daily Tasks in Life</Heading>
-        <Button title='Get Started' onClick={handleGetStarted}
-            hoverColor='#ffffff'
+        <Button
+          title='Get Started'
+          onClick={handleGetStarted}
+          hoverColor='#ffffff'
         />
       </Wrapper>
     </HomeContainer>
