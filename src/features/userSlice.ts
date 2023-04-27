@@ -1,23 +1,36 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 // import type { RootState } from '../app/store';
 
-interface UserState {
+interface User {
   name: string;
-  image: string;
+  file: File | FileList | string;
 }
 
-const initialState: UserState = {
-  name: '',
-  image: '',
+interface UserState {
+  users: User | null;
+}
+
+const getInitialState = (): UserState => {
+  const storedUsers = localStorage.getItem('users');
+  if (storedUsers) {
+    return { users: JSON.parse(storedUsers) };
+  } else {
+    return { users: null };
+  }
 };
+
+const initialState: UserState = getInitialState();
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<UserState>) => {
-      state.name = action.payload.name;
-      state.image = action.payload.image;
+    addUser: (state, action: PayloadAction<User>) => {
+      //add user to state
+      state.users = action.payload;
+
+      //add user to local storage
+      localStorage.setItem('users', JSON.stringify(state.users));
     },
   },
 });
