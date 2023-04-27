@@ -53,6 +53,7 @@ const SignIn = () => {
               required: 'Required',
             })}
             error={errors.file && 'Please upload a photo'}
+            padding='8px 12px'
           />
         </AddPhoto>
 
@@ -68,6 +69,7 @@ const SignIn = () => {
             })}
             placeholder='Your Name'
             error={errors.name && 'Please enter a valid name'}
+            padding='8px 12px'
           />
         </Form>
 

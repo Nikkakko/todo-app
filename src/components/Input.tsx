@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
+  padding: string;
 }
 
 const Input = forwardRef(
@@ -14,6 +15,7 @@ const Input = forwardRef(
           {...props}
           style={{
             display: props.type === 'file' ? 'none' : 'block',
+            padding: props.padding,
           }}
         />
         {props.error && <Error>{props.error}</Error>}
@@ -21,9 +23,9 @@ const Input = forwardRef(
     );
   }
 );
+
 const InputStyled = styled.input`
   width: 100%;
-  padding: 8px 12px;
   background: #e6ebff 0% 0% no-repeat padding-box;
   border: none;
   border-radius: 4px;
