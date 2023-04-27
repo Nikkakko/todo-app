@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../app/store';
+// import type { RootState } from '../app/store';
 import { TasksState } from '../types';
 import { v4 as uuidv4 } from 'uuid';
 
