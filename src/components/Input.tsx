@@ -1,9 +1,11 @@
 import { ForwardedRef, forwardRef } from 'react';
 import styled from 'styled-components';
+import { device } from '../styles/media';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   padding: string;
+  paddingL?: string;
 }
 
 const Input = forwardRef(
@@ -15,8 +17,9 @@ const Input = forwardRef(
           {...props}
           style={{
             display: props.type === 'file' ? 'none' : 'block',
-            padding: props.padding,
           }}
+          padding={props.padding}
+          paddingL={props.paddingL}
         />
         {props.error && <Error>{props.error}</Error>}
       </>
@@ -24,11 +27,15 @@ const Input = forwardRef(
   }
 );
 
-const InputStyled = styled.input`
+const InputStyled = styled.input<{
+  padding: string;
+  paddingL?: string;
+}>`
   width: 100%;
   background: #e6ebff 0% 0% no-repeat padding-box;
   border: none;
   border-radius: 4px;
+  padding: ${props => props.padding};
 
   outline: none;
 
@@ -39,6 +46,14 @@ const InputStyled = styled.input`
     color: #000000;
     text-transform: lowercase;
     opacity: 0.2;
+  }
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    padding: ${props => props.paddingL};
+    font-size: 20px;
   }
 `;
 

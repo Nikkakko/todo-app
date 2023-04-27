@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
+import { device } from '../styles/media';
 
 const Header = () => {
   const { users } = useAppSelector(state => state.user);
@@ -19,9 +20,15 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
-  padding: 12px 24px;
+  padding: 8px 24px;
   background-color: #000;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    padding: 15px 28px;
+  }
 `;
 
 const Title = styled.h1`
@@ -30,6 +37,13 @@ const Title = styled.h1`
   letter-spacing: 0px;
   text-align: center;
   text-transform: uppercase;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    font-size: 36px;
+  }
 `;
 
 const UserInfo = styled.div`
@@ -44,6 +58,13 @@ const UserName = styled.span`
   letter-spacing: 0px;
   text-align: center;
   text-transform: capitalize;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    font-size: 22px;
+  }
 `;
 
 const UserImage = styled.img`
@@ -52,6 +73,14 @@ const UserImage = styled.img`
   border-radius: 50%;
 
   object-fit: cover;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    width: 68px;
+    height: 68px;
+  }
 `;
 
 export default Header;

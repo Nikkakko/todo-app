@@ -1,23 +1,41 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { device } from '../styles/media';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
   onClick?: () => void;
   hoverColor?: string;
+  padding?: string;
+  fontSize?: string;
 }
 
-const Button: FC<ButtonProps> = ({ title, onClick, hoverColor }) => {
+const Button: FC<ButtonProps> = ({
+  title,
+  onClick,
+  hoverColor,
+  padding,
+  fontSize,
+}) => {
   return (
-    <ButtonStyled onClick={onClick} hoverColor={hoverColor}>
+    <ButtonStyled
+      onClick={onClick}
+      hoverColor={hoverColor}
+      padding={padding}
+      fontSize={fontSize}
+    >
       {title}
     </ButtonStyled>
   );
 };
 
-const ButtonStyled = styled.button<{ hoverColor?: string }>`
+const ButtonStyled = styled.button<{
+  hoverColor?: string;
+  padding?: string;
+  fontSize?: string;
+}>`
   background-color: #5efc8d;
-  color: #000;
+  color: #000000;
   border-radius: 4px;
   cursor: pointer;
   border: none;
@@ -34,6 +52,16 @@ const ButtonStyled = styled.button<{ hoverColor?: string }>`
   &:hover {
     background-color: ${({ hoverColor }) => hoverColor};
     color: ${({ hoverColor }) => (hoverColor === '#000' ? '#fff' : '#000')};
+  }
+
+  @media ${device.tablet} {
+    padding: 16px 58px 15px 59px;
+    font-size: 16px;
+  }
+
+  @media ${device.laptopL} {
+    padding: ${({ padding }) => padding};
+    font-size: ${({ fontSize }) => fontSize || '48px'};
   }
 `;
 

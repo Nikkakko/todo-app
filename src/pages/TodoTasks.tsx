@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import Todos from '../components/Todos';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addTask } from '../features/tasksSlice';
+import { device } from '../styles/media';
 
 type Inputs = {
   task: string;
@@ -33,14 +34,17 @@ const TodoTasks = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type='text'
-          placeholder='my tasks'
+          placeholder='my task'
           {...register('task', { required: 'Required' })}
           padding='12px 16px'
+          paddingL='23px 0 22px 24px '
         />
         <Button
           title='Add'
           onClick={handleSubmit(onSubmit)}
           hoverColor='#000'
+          padding='16px 22px 15px 22px'
+          fontSize='32px'
         />
       </Form>
       <Error>
@@ -64,6 +68,9 @@ const Container = styled.div`
   align-items: center;
   margin-top: 35px;
   padding: 0 24px;
+
+  @media ${device.laptopL} {
+  }
 `;
 
 const Form = styled.form`
@@ -71,6 +78,11 @@ const Form = styled.form`
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+  width: 100%;
+
+  @media ${device.laptopL} {
+    width: 595px;
+  }
 `;
 
 const Title = styled.h1`
@@ -79,6 +91,10 @@ const Title = styled.h1`
   letter-spacing: 0px;
   text-align: center;
   text-transform: capitalize;
+
+  @media ${device.laptopL} {
+    font-size: 42px;
+  }
 `;
 
 const Error = styled.p`

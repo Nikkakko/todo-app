@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addUser } from '../features/userSlice';
 import { useEffect } from 'react';
+import { device } from '../styles/media';
 
 type Inputs = {
   name: string;
@@ -78,6 +79,7 @@ const SignIn = () => {
             placeholder='Your Name'
             error={errors.name && 'Please enter a valid name'}
             padding='8px 12px'
+            paddingL='23px 0 22px 24px'
           />
         </Form>
 
@@ -85,6 +87,7 @@ const SignIn = () => {
           title='Sign In'
           hoverColor='#000'
           onClick={handleSubmit(onSubmit)}
+          padding='11px 77px 10px 77px'
         />
       </Wrapper>
     </SignInContainer>
@@ -96,7 +99,15 @@ const SignInContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 40px 32px;
+  /* padding: 40px 32px; */
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    align-items: flex-start;
+    padding: 40px 0px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -108,6 +119,15 @@ const Wrapper = styled.div`
   background-color: #fff;
 
   padding: 32px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    padding: 33px 50px 63px 51px;
+
+    width: 588px;
+  }
 `;
 
 const Heading = styled.h1`
@@ -116,6 +136,14 @@ const Heading = styled.h1`
   color: #000;
   letter-spacing: 0px;
   text-align: center;
+
+  @media ${device.tablet} {
+    font-size: 18px;
+  }
+
+  @media ${device.laptopL} {
+    font-size: 48px;
+  }
 `;
 
 const AddPhoto = styled.div`
@@ -125,6 +153,14 @@ const AddPhoto = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 4px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    margin-top: 44px;
+    gap: 10px;
+  }
 `;
 
 const Subtitle = styled.span`
@@ -133,6 +169,14 @@ const Subtitle = styled.span`
   color: #000;
   letter-spacing: 0px;
   text-align: center;
+
+  @media ${device.tablet} {
+    font-size: 14px;
+  }
+
+  @media ${device.laptopL} {
+    font-size: 22px;
+  }
 `;
 
 const Form = styled.form`
@@ -144,6 +188,16 @@ const Form = styled.form`
   gap: 4px;
 
   margin-bottom: 32px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    width: 100%;
+    margin-top: 53px;
+    margin-bottom: 76px;
+    gap: 16px;
+  }
 `;
 
 const Label = styled.label`
@@ -152,6 +206,14 @@ const Label = styled.label`
   color: #000;
   letter-spacing: 0px;
   text-align: center;
+
+  @media ${device.tablet} {
+    font-size: 14px;
+  }
+
+  @media ${device.laptopL} {
+    font-size: 22px;
+  }
 `;
 
 const PhotoButton = styled.label`
@@ -169,6 +231,26 @@ const PhotoButton = styled.label`
   img {
     width: 20px;
     height: 20px;
+  }
+
+  @media ${device.tablet} {
+    width: 60px;
+    height: 60px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media ${device.laptopL} {
+    width: 122px;
+    height: 122px;
+
+    img {
+      width: 44.3px;
+      height: 40.35px;
+    }
   }
 `;
 

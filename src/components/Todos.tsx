@@ -4,6 +4,7 @@ import { TasksState } from '../types';
 import { DeleteIcon, DoneIcon } from '../assets/svgs';
 import { useAppDispatch } from '../app/hooks';
 import { removeTodo, setTodoStatus } from '../features/tasksSlice';
+import { device } from '../styles/media';
 
 interface TodosProps {
   task: TasksState;
@@ -22,7 +23,7 @@ const Todos: FC<TodosProps> = ({ task, IsCompleted }) => {
   };
   return (
     <Container isCompleted={IsCompleted}>
-      <TasTitle>{task.title}</TasTitle>
+      <TaskTitle>{task.title}</TaskTitle>
       <Icons>
         <DoneBg>
           <Image src={DoneIcon} alt='Done' onClick={handleDone} />
@@ -54,14 +55,33 @@ const Container = styled.div<{
   align-items: center;
   justify-content: space-between;
   position: relative;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    width: 595px;
+    &:first-of-type {
+      margin-top: 51px;
+    }
+
+    padding: 11.5px 24px;
+  }
 `;
 
-const TasTitle = styled.p`
+const TaskTitle = styled.p`
   font-size: 14px;
   color: #fff;
   letter-spacing: 0px;
   text-align: center;
   text-transform: capitalize;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    font-size: 22px;
+  }
 `;
 
 const Icons = styled.div`
@@ -69,11 +89,25 @@ const Icons = styled.div`
   align-items: center;
   justify-content: center;
   gap: 8px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+  }
 `;
 
 const Image = styled.img`
   width: 20px;
   height: 20px;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const DoneBg = styled.div`
@@ -90,6 +124,15 @@ const DoneBg = styled.div`
   border-radius: 4px;
   &:hover {
     background-color: #5efc8d;
+  }
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    height: 56px;
+    width: 40px;
+    right: 45px;
   }
 `;
 

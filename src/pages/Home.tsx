@@ -3,6 +3,7 @@ import { TodoStarter } from '../assets/svgs';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { useAppSelector } from '../app/hooks';
+import { device } from '../styles/media';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Home = () => {
           title='Get Started'
           onClick={handleGetStarted}
           hoverColor='#ffffff'
+          padding='16px 58px 15px 59px'
         />
       </Wrapper>
     </HomeContainer>
@@ -36,6 +38,13 @@ const HomeContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+  @media ${device.tablet} {
+  }
+
+  @media ${device.laptopL} {
+    align-items: flex-start;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -50,6 +59,25 @@ const Wrapper = styled.div`
   }
 
   padding: 74px 32px 160px 32px;
+
+  @media ${device.tablet} {
+    img {
+      width: 80px;
+    }
+  }
+
+  @media ${device.laptopL} {
+    padding: 90.3px 0px 0px 0px;
+    gap: 46px;
+
+    img {
+      width: 90.36px;
+    }
+
+    button {
+      margin-top: 149px;
+    }
+  }
 `;
 
 const Heading = styled.h1`
@@ -60,6 +88,17 @@ const Heading = styled.h1`
   text-align: center;
 
   max-width: 150px;
+
+  @media ${device.tablet} {
+    max-width: 300px;
+
+    font-size: 18px;
+  }
+
+  @media ${device.laptopL} {
+    max-width: 100%;
+    font-size: 54px;
+  }
 `;
 
 export default Home;
