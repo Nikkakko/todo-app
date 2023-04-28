@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { logOut } from '../features/userSlice';
 import Button from './Button';
+import { device } from '../styles/media';
 
 const LogoutPopUp = () => {
   const { users } = useAppSelector(state => state.user);
@@ -32,6 +33,12 @@ const Container = styled.div`
   gap: 8px;
 
   z-index: 999;
+
+  @media ${device.tablet} {
+    width: 250px;
+    height: 150px;
+    align-items: flex-start;
+  }
 `;
 
 const Title = styled.h1`

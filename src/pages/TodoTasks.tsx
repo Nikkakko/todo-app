@@ -53,6 +53,7 @@ const TodoTasks = () => {
       {!tasks.length && (
         <Title style={{ marginTop: '32px' }}>No Tasks Added</Title>
       )}
+
       {tasks.map(task => (
         <Todos key={task.id} task={task} IsCompleted={task.IsCompleted} />
       ))}
