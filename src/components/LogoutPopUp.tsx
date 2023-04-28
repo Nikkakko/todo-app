@@ -11,7 +11,13 @@ const LogoutPopUp = () => {
   return (
     <Container>
       <Title>{users?.name}</Title>
-      <Button title='Logout' onClick={() => dispatch(logOut())} />
+      <Button
+        title='Logout'
+        onClick={() => dispatch(logOut())}
+        hoverColor='#000'
+        padding='16px 22px 15px 22px'
+        fontSize='32px'
+      />
     </Container>
   );
 };
@@ -35,9 +41,16 @@ const Container = styled.div`
   z-index: 999;
 
   @media ${device.tablet} {
-    width: 200px;
-    height: 150px;
+    width: 150px;
+    height: 100px;
     align-items: flex-start;
+  }
+
+  @media ${device.laptopL} {
+    width: 250px;
+    height: 150px;
+    padding: 16px;
+    top: 98px;
   }
 `;
 
@@ -47,6 +60,14 @@ const Title = styled.h1`
   letter-spacing: 0px;
   text-align: center;
   text-transform: uppercase;
+
+  @media ${device.tablet} {
+    font-size: 18px;
+  }
+
+  @media ${device.laptopL} {
+    font-size: 22px;
+  }
 `;
 
 export default LogoutPopUp;
