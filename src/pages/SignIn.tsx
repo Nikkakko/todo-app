@@ -6,7 +6,6 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addUser } from '../features/userSlice';
-import { useEffect } from 'react';
 import { device } from '../styles/media';
 import useNavigateToTasks from '../hooks/useNavigateToTasks';
 
