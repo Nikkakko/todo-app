@@ -55,7 +55,7 @@ const ButtonStyled = styled.button<{
   }
 
   @media ${device.tablet} {
-    padding: 16px 58px 15px 59px;
+    /* padding: 16px 58px 15px 59px; */
     font-size: 16px;
   }
 

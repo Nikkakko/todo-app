@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Input from '../components/Input';
 import { useForm } from 'react-hook-form';
 import Button from '../components/Button';
-import Todos from '../components/Todos';
+import Todos from '../components/Tasks';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { addTask } from '../features/tasksSlice';
 import { device } from '../styles/media';
@@ -11,7 +11,7 @@ type Inputs = {
   task: string;
 };
 
-const TodoTasks = () => {
+const TodoPage = () => {
   const dispatch = useAppDispatch();
   const { tasks } = useAppSelector(state => state.tasks);
 
@@ -62,13 +62,16 @@ const TodoTasks = () => {
 };
 
 const Container = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 35px;
   padding: 0 24px;
+
+  @media ${device.tablet} {
+  }
 
   @media ${device.laptopL} {
   }
@@ -80,6 +83,10 @@ const Form = styled.form`
   align-items: center;
   margin-top: 16px;
   width: 100%;
+
+  @media ${device.tablet} {
+    width: 400px;
+  }
 
   @media ${device.laptopL} {
     width: 595px;
@@ -107,4 +114,4 @@ const Error = styled.p`
   margin-top: 8px;
 `;
 
-export default TodoTasks;
+export default TodoPage;

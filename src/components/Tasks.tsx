@@ -6,12 +6,12 @@ import { useAppDispatch } from '../app/hooks';
 import { removeTodo, setTodoStatus } from '../features/tasksSlice';
 import { device } from '../styles/media';
 
-interface TodosProps {
+interface TasksProps {
   task: TasksState;
   IsCompleted: boolean;
 }
 
-const Todos: FC<TodosProps> = ({ task, IsCompleted }) => {
+const Tasks: FC<TasksProps> = ({ task, IsCompleted }) => {
   const dispatch = useAppDispatch();
 
   const handleDelete = () => {
@@ -21,6 +21,7 @@ const Todos: FC<TodosProps> = ({ task, IsCompleted }) => {
   const handleDone = () => {
     dispatch(setTodoStatus({ id: task.id }));
   };
+
   return (
     <Container isCompleted={IsCompleted}>
       <TaskTitle>{task.title}</TaskTitle>
@@ -57,6 +58,7 @@ const Container = styled.div<{
   position: relative;
 
   @media ${device.tablet} {
+    width: 400px;
   }
 
   @media ${device.laptopL} {
@@ -143,4 +145,4 @@ const DeleteBG = styled(DoneBg)`
   }
 `;
 
-export default Todos;
+export default Tasks;

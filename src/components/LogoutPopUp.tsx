@@ -35,7 +35,7 @@ const Container = styled.div`
   z-index: 999;
 
   @media ${device.tablet} {
-    width: 250px;
+    width: 200px;
     height: 150px;
     align-items: flex-start;
   }
