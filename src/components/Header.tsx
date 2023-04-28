@@ -59,6 +59,14 @@ const UserInfo = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  @media ${device.tablet} {
+    gap: 12px;
+  }
+
+  @media ${device.laptopL} {
+    gap: 20px;
+  }
 `;
 
 const UserName = styled.span`
