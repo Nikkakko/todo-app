@@ -3,14 +3,22 @@ import { useAppSelector } from '../app/hooks';
 import { device } from '../styles/media';
 import LogoutPopUp from './LogoutPopUp';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const { users } = useAppSelector(state => state.user);
+  const navigate = useNavigate();
   const [showLogout, setShowLogout] = useState<boolean>(false);
 
   return (
     <Container>
-      <Title>Todo</Title>
+      <Title
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        Todo
+      </Title>
       <UserInfo>
         <UserName>{users?.name}</UserName>
         <UserImage
@@ -48,6 +56,7 @@ const Title = styled.h1`
   text-transform: uppercase;
 
   @media ${device.tablet} {
+    cursor: pointer;
   }
 
   @media ${device.laptopL} {
@@ -88,10 +97,10 @@ const UserImage = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-
   object-fit: cover;
 
   @media ${device.tablet} {
+    cursor: pointer;
   }
 
   @media ${device.laptopL} {

@@ -52,6 +52,11 @@ const Container = styled.div`
     padding: 16px;
     top: 98px;
   }
+
+  @media ${device.desktop} {
+    width: 300px;
+    height: 200px;
+  }
 `;
 
 const Title = styled.h1`
