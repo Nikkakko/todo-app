@@ -1,22 +1,31 @@
 import styled from 'styled-components';
 import { useAppSelector } from '../app/hooks';
 import { device } from '../styles/media';
+import LogoutPopUp from './LogoutPopUp';
+import { useState } from 'react';
 
 const Header = () => {
   const { users } = useAppSelector(state => state.user);
+  const [showLogout, setShowLogout] = useState<boolean>(false);
 
   return (
     <Container>
       <Title>Todo</Title>
       <UserInfo>
         <UserName>{users?.name}</UserName>
-        <UserImage src={users?.file as string} alt='User' />
+        <UserImage
+          src={users?.file as string}
+          alt='User'
+          onClick={() => setShowLogout(!showLogout)}
+        />
       </UserInfo>
+      {showLogout && <LogoutPopUp />}
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

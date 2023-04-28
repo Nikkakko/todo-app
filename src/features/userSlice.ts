@@ -32,9 +32,19 @@ export const userSlice = createSlice({
       //add user to local storage
       localStorage.setItem('users', JSON.stringify(state.users));
     },
+
+    logOut: state => {
+      // remove user from state
+      state.users = null;
+      // remove user from local storage as well
+      localStorage.removeItem('users');
+
+      //remove tasks from local storage
+      localStorage.removeItem('tasks');
+    },
   },
 });
 
-export const { addUser } = userSlice.actions;
+export const { addUser, logOut } = userSlice.actions;
 
 export default userSlice.reducer;

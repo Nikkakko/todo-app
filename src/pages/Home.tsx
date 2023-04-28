@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { useAppSelector } from '../app/hooks';
 import { device } from '../styles/media';
+import useNavigateToTasks from '../hooks/useNavigateToTasks';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ const Home = () => {
     }
     navigate('/signin');
   };
+
+  useNavigateToTasks(users, navigate);
 
   return (
     <HomeContainer>
