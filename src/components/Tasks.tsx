@@ -45,7 +45,12 @@ const Container = styled.div<{
     margin-top: 32px;
   }
   margin-top: 16px;
-  opacity: ${({ isCompleted }) => (isCompleted ? '0.07' : '1')};
+  background-color: rgba(
+    0,
+    0,
+    0,
+    ${({ isCompleted }) => (isCompleted ? '0.07' : '1')}
+  );
   width: 100%;
   display: flex;
   align-items: center;
@@ -122,6 +127,7 @@ const DoneBg = styled.div`
   right: 37px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  z-index: 99;
 
   border-radius: 4px;
   &:hover {
