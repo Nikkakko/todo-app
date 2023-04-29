@@ -45,7 +45,7 @@ const Container = styled.div<{
     margin-top: 32px;
   }
   margin-top: 16px;
-  opacity: ${({ isCompleted }) => (isCompleted ? '7%' : '1')};
+  opacity: ${({ isCompleted }) => (isCompleted ? '0.07' : '1')};
   width: 100%;
   display: flex;
   align-items: center;
