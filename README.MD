@@ -6,7 +6,7 @@
 
 ## Links to the project
 
-- [Link to the project](unilab-todo-app.netlify.app)
+- [Link to the project](https://unilab-todo-app.netlify.app)
 - [Link to the repository](https://github.com/Nikkakko/todo-app)
 
 ## Project description
