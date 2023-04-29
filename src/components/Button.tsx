@@ -62,6 +62,7 @@ const ButtonStyled = styled.button<{
   @media ${device.laptopL} {
     padding: ${({ padding }) => padding};
     font-size: ${({ fontSize }) => fontSize || '48px'};
+    font-weight: 300;
   }
 `;
 

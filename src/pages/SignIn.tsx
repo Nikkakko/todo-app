@@ -84,6 +84,7 @@ const SignIn = () => {
           hoverColor='#000'
           onClick={handleSubmit(onSubmit)}
           padding='11px 77px 10px 77px'
+          fontSize='32px'
         />
       </Wrapper>
     </SignInContainer>

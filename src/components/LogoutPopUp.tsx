@@ -16,7 +16,7 @@ const LogoutPopUp = () => {
         onClick={() => dispatch(logOut())}
         hoverColor='#000'
         padding='16px 22px 15px 22px'
-        fontSize='32px'
+        fontSize='16px'
       />
     </Container>
   );
@@ -47,9 +47,9 @@ const Container = styled.div`
   }
 
   @media ${device.laptopL} {
-    width: 250px;
+    width: 200px;
     height: 150px;
-    padding: 16px;
+    padding: 8px;
     top: 98px;
   }
 
