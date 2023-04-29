@@ -53,7 +53,7 @@ const InputStyled = styled.input<{
 
   @media ${device.laptopL} {
     padding: ${props => props.paddingL};
-    font-size: 20px;
+    font-size: 22px;
   }
 `;
 
